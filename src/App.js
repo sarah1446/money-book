@@ -9,33 +9,43 @@ class App extends React.Component {
     this.state = {
       moneyList: [
         {
-          time: "",
           content: "",
-          price: ""
+          price: "",
+          time: "",
         }
       ]
     }
   }
 
-  addMoneyList = (text, price) => {
-    // console.log(text, price);
-
+  addMoneyList = (text, price, time) => {
+    //console.log(time);
     this.setState({
       moneyList: [
         ...this.state.moneyList,
         {
-          time: '',
           content: text,
-          price: price
+          price: price,
+          time: time
         }
       ]
     })
   }
+
+  deleteList = (list) => {
+    const moneyList = this.state.moneyList.slice();
+    this.setState({
+      moneyList: moneyList.filter(t => t !== list),
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <AddBar addMoneyList={this.addMoneyList}></AddBar>
-        <MoneyListWrap moneyList={this.state.moneyList}></MoneyListWrap>
+        <MoneyListWrap
+          moneyList={this.state.moneyList}
+          deleteList={this.deleteList}
+        ></MoneyListWrap>
       </div>
     )
   }

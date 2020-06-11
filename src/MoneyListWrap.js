@@ -5,7 +5,7 @@ class MoneyListWrap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      total: '0'
     }
   }
 
@@ -14,13 +14,14 @@ class MoneyListWrap extends React.Component {
     return (
       <div>
         {
-          this.props.moneyList.map((a, key) => {
+          this.props.moneyList.map((list, key) => {
             return (
-              <ul className="" key={key}>
-                <li>{a.time}</li>
-                <li>{a.content}</li>
-                <li>{a.price}</li>
-              </ul>
+              <MoneyList
+                list={list}
+                key={key}
+                deleteList={this.props.deleteList}
+              >
+              </MoneyList>
             )
           })
         }
