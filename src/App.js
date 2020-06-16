@@ -36,16 +36,19 @@ class App extends React.Component {
     })
   }
 
-  deleteList = (list) => {
+  deleteList = (list, price) => {
     const moneyList = this.state.moneyList.slice();
+    const totalPrice = this.state.totalPrice;
+
     this.setState({
       moneyList: moneyList.filter(t => t !== list),
+      totalPrice: Number(totalPrice) - Number(price)
     })
   }
 
   totalPrice = (price) => {
     // this.state.moneyList로 했을땐 안됐음. this.state.totalPrice로 접근했어야 함.
-    let totalPrice = this.state.totalPrice;
+    const totalPrice = this.state.totalPrice;
     this.setState({
       totalPrice: Number(price) + Number(totalPrice)
     })

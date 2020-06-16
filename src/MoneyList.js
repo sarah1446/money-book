@@ -10,7 +10,7 @@ class MoneyList extends React.Component {
 
   deleteList = () => {
     // this.props.deleteList(this.props.moneyList);
-    this.props.deleteList(this.props.list);
+    this.props.deleteList(this.props.list, this.props.list.price);
   }
 
   // totalPrice = () => {
