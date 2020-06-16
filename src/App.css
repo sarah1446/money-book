@@ -11,7 +11,7 @@ li{
 
 .list-wrap{
   overflow: hidden;
-  
+  width: 200px;
 }
 .list-wrap li{
   float: left;
@@ -28,6 +28,7 @@ li{
 }
 
 .money-list{
-  width: 150px;
+  width: 270px;
   margin: 0 auto; 
 }
+

@@ -1,16 +1,18 @@
 import React from 'react';
 import MoneyList from './MoneyList';
+// import AddBar from './AddBar.js'
 
 class MoneyListWrap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: '0'
+      // total: '0'
     }
   }
 
 
   render() {
+    // const _total = this.props.totalPrice
     return (
       <div>
         {
@@ -25,6 +27,7 @@ class MoneyListWrap extends React.Component {
             )
           })
         }
+        <p>{this.props.totalPrice}</p>
       </div>
     )
   }

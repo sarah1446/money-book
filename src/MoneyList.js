@@ -13,6 +13,9 @@ class MoneyList extends React.Component {
     this.props.deleteList(this.props.list);
   }
 
+  // totalPrice = () => {
+  //   this.props.
+  // }
 
 
   render() {

@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import AddBar from './AddBar';
 import MoneyListWrap from './MoneyListWrap';
+import TotalPrice from './TotalPrice';
+import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,20 +14,23 @@ class App extends React.Component {
           content: "",
           price: "",
           time: "",
+          id: uuidv4()
         }
-      ]
+      ],
+      totalPrice: 0
     }
   }
 
-  addMoneyList = (text, price, time) => {
-    //console.log(time);
+  addMoneyList = (text, price) => {
+    const t = new Date()
     this.setState({
       moneyList: [
         ...this.state.moneyList,
         {
           content: text,
           price: price,
-          time: time
+          time: t.toLocaleTimeString(),
+          id: uuidv4()
         }
       ]
     })
@@ -38,14 +43,23 @@ class App extends React.Component {
     })
   }
 
+  totalPrice = (price) => {
+    // this.state.moneyList로 했을땐 안됐음. this.state.totalPrice로 접근했어야 함.
+    let totalPrice = this.state.totalPrice;
+    this.setState({
+      totalPrice: Number(price) + Number(totalPrice)
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <AddBar addMoneyList={this.addMoneyList}></AddBar>
+        <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
         <MoneyListWrap
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
         ></MoneyListWrap>
+        <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
       </div>
     )
   }

@@ -22,14 +22,14 @@ class AddBar extends React.Component {
 
   sendList = () => {
     // const t = new Date();
-    // console.log(t);
-    this.props.addMoneyList(this.state.text, this.state.price, this.state.time)
+    //왜 여기서 new Date하면 안되지
+    this.props.addMoneyList(this.state.text, this.state.price);
     this.setState({
       text: '',
       price: '',
       // time: t
-    })
-    // console.log(this.state.time);
+    });
+    this.props.totalPrice(this.state.price);
   }
 
   render() {
