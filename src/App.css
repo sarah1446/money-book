@@ -15,7 +15,9 @@ li{
 }
 .list-wrap li{
   float: left;
-  min-width:50px
+  min-width:50px;
+      min-width: 66px;
+      height:25px;
 }
 .list-wrap li.time{
   
