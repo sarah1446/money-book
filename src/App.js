@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   addMoneyList = (text, price) => {
-    const t = new Date()
+    const t = new Date();
     this.setState({
       moneyList: [
         ...this.state.moneyList,
@@ -34,6 +34,33 @@ class App extends React.Component {
         }
       ]
     })
+  }
+
+  // updatingMoneyList = (text, price) => {
+  //   let moneyList = this.state.moneyList.slice();
+  //   console.log(this.state.moneyList.uuid);
+
+  // }
+
+  updatingMoneyList = (list) => {
+    let moneyList = this.state.moneyList.slice();
+    let { content, price, id } = list;
+    console.log(list.content);
+    for (var i = 0; i < moneyList.length; i++) {
+
+      if (moneyList[i].id === list.id) {
+        console.log(`${moneyList[i].content} ==  ${list.content}`);
+        //moneyList[i].content = list.content;
+        //console.log(`${moneyList[i].id} === ${list.id} `);
+        moneyList[i].content = list.content;
+        console.log(moneyList);
+      }
+    }
+    this.setState({
+      ...moneyList
+      // moneyList: moneyList
+
+    });
   }
 
   deleteList = (list, price) => {
@@ -57,12 +84,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
         <MoneyListWrap
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
+          updatingMoneyList={this.updatingMoneyList}
         ></MoneyListWrap>
         <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
+        <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
       </div>
     )
   }

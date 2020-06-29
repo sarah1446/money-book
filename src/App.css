@@ -3,7 +3,19 @@
   padding:0;
 }
 .App {
+  position: relative;
   text-align: center;
+  border: 1px solid purple;
+     width: 300px;
+     width: 400px;
+    height: 450px;
+    margin: 0 auto;
+    padding: 25px 10px;
+}
+.App .date{
+  background-color: aquamarine;
+    height: 40px;
+    margin-bottom: 5px;
 }
 li{
   list-style: none
@@ -11,26 +23,61 @@ li{
 
 .list-wrap{
   overflow: hidden;
-  width: 200px;
+  width: 280px;
+  width: 100%;
 }
 .list-wrap li{
+  width:35%;
   float: left;
   min-width:50px;
       min-width: 66px;
       height:25px;
 }
 .list-wrap li.time{
-  
+  width:20%;
+  width:30%;
 }
 .list-wrap li.cont{
+  /* width:40%; */
   background-color:yellow;
 }
 .list-wrap li.price{
+  /* width: 40%; */
   background-color:aquamarine;
 }
 
 .money-list{
-  width: 270px;
+  /* width: 270px; */
   margin: 0 auto; 
 }
+.money-list .delete{
+  width: 20px;
+}
+.add-bar{
+  position: absolute;
+  bottom: 25px;
+  height: 30px;
+}
 
+.add-bar input[type="text"]{
+  height: 34px;
+  width: 120px;
+  margin-right: 7px;
+  border: 1px solid #63c7a6;
+  border-radius: 3px;
+  outline: none;
+      padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.add-bar button{
+  height: 34px;
+    vertical-align: middle;
+    width: 46px;
+    background-color: #69dab4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    outline: none;
+}

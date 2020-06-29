@@ -15,6 +15,7 @@ class MoneyListWrap extends React.Component {
     // const _total = this.props.totalPrice
     return (
       <div>
+        <div className="date">2020.06</div>
         {
           this.props.moneyList.map((list, key) => {
             return (
@@ -22,6 +23,7 @@ class MoneyListWrap extends React.Component {
                 list={list}
                 key={key}
                 deleteList={this.props.deleteList}
+                updatingMoneyList={this.props.updatingMoneyList}
               >
               </MoneyList>
             )

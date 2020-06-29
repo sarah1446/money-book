@@ -34,7 +34,7 @@ class AddBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="add-bar">
         <input type="text" onChange={this.changeText} value={this.state.text} />
         <input type="text" onChange={this.changePrice} value={this.state.price} />
         <button onClick={this.sendList}>추가</button>
