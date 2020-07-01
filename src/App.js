@@ -36,31 +36,30 @@ class App extends React.Component {
     })
   }
 
-  // updatingMoneyList = (text, price) => {
-  //   let moneyList = this.state.moneyList.slice();
-  //   console.log(this.state.moneyList.uuid);
-
-  // }
-
   updatingMoneyList = (list) => {
     let moneyList = this.state.moneyList.slice();
     let { content, price, id } = list;
-    console.log(list.content);
     for (var i = 0; i < moneyList.length; i++) {
-
       if (moneyList[i].id === list.id) {
-        console.log(`${moneyList[i].content} ==  ${list.content}`);
-        //moneyList[i].content = list.content;
-        //console.log(`${moneyList[i].id} === ${list.id} `);
         moneyList[i].content = list.content;
-        console.log(moneyList);
       }
     }
     this.setState({
       ...moneyList
-      // moneyList: moneyList
-
     });
+  }
+
+  updatingMoneyList2 = (list) => {
+    let moneyList = this.state.moneyList.slice();
+    for (var i = 0; i < moneyList.length; i++) {
+      if (moneyList[i].id === list.id) {
+        moneyList[i].price = list.price;
+      }
+    }
+    this.setState({
+      ...moneyList,
+      // totalPrice: 0
+    })
   }
 
   deleteList = (list, price) => {
@@ -74,6 +73,7 @@ class App extends React.Component {
   }
 
   totalPrice = (price) => {
+    //console.log(price);
     // this.state.moneyList로 했을땐 안됐음. this.state.totalPrice로 접근했어야 함.
     const totalPrice = this.state.totalPrice;
     this.setState({
@@ -88,6 +88,7 @@ class App extends React.Component {
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
           updatingMoneyList={this.updatingMoneyList}
+          updatingMoneyList2={this.updatingMoneyList2}
         ></MoneyListWrap>
         <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
         <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>

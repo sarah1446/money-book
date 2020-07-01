@@ -24,6 +24,7 @@ class MoneyListWrap extends React.Component {
                 key={key}
                 deleteList={this.props.deleteList}
                 updatingMoneyList={this.props.updatingMoneyList}
+                updatingMoneyList2={this.props.updatingMoneyList2}
               >
               </MoneyList>
             )

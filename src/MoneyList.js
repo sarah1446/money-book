@@ -5,8 +5,10 @@ class MoneyList extends React.Component {
     super(props);
     this.state = {
       content: '',
+      price: '',
       time: '',
-      updatingMode: false
+      contentUpdatingMode: false,
+      priceUpdatingMode: false,
     }
   }
 
@@ -14,27 +16,46 @@ class MoneyList extends React.Component {
     this.props.deleteList(this.props.list, this.props.list.price);
   }
 
-  updatingOpen = (e) => {
+  contentUpdatingOpen = (e) => {
     this.setState({
-      updatingMode: true,
+      contentUpdatingMode: true,
       content: e.target.value,
-      price: e.target.value
+      // price: e.target.value
     })
   }
 
-  updating = (e) => {
+  priceUpdatingOpen = (e) => {
+    this.setState({
+      priceUpdatingMode: true,
+      // price: e.target.value
+    })
+  }
+
+  contentUpdating = (e) => {
     if (e.keyCode === 13) {
       this.setState({
-        updatingMode: false,
+        contentUpdatingMode: false,
       });
-      //let newText = e.target.value;
-      //console.log(newText);
       this.props.updatingMoneyList({
         ...this.props.list,
         content: e.target.value
       });
     }
   }
+
+  priceUpdating = e => {
+    if (e.keyCode === 13) {
+      this.setState({
+        priceUpdatingMode: false,
+      });
+      this.props.updatingMoneyList2({
+        ...this.props.list,  // 
+        price: e.target.value
+      });
+    }
+  }
+
+
 
   render() {
     const { content, price, time } = this.props.list;
@@ -43,16 +64,22 @@ class MoneyList extends React.Component {
         <div className="delete" onClick={this.deleteList}>x</div>
         <ul className="list-wrap">
           <li className="time">{time}</li>
-          <li className="cont" onDoubleClick={this.updatingOpen}>
-            {this.state.updatingMode === false ?
+          <li className="cont" onDoubleClick={this.contentUpdatingOpen}>
+            {this.state.contentUpdatingMode === false ?
               //내용
               content
               :
               //수정모드 
-              <input type="text" defaultValue={content} onKeyDown={this.updating} />
+              <input type="text" defaultValue={content} onKeyDown={this.contentUpdating} />
             }
           </li>
-          <li className="price">{price}</li>
+          <li className="price" onDoubleClick={this.priceUpdatingOpen}>
+            {this.state.priceUpdatingMode === false ?
+              price
+              :
+              <input type="text" defaultValue={price} onKeyDown={this.priceUpdating} />
+            }
+          </li>
         </ul>
       </div>
     )
