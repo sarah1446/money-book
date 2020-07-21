@@ -29,7 +29,7 @@ class AddBar extends React.Component {
       price: '',
       // time: t
     });
-    this.props.totalPrice(this.state.price);
+    // this.props.totalPrice(this.state.price);
   }
 
   render() {

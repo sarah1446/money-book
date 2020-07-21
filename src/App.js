@@ -10,12 +10,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       moneyList: [
-        {
-          content: "",
-          price: "",
-          time: "",
-          id: uuidv4()
-        }
+        // {
+        //   content: "",
+        //   price: "",
+        //   time: "",
+        //   id: uuidv4()
+        // }
       ],
       totalPrice: 0
     }
@@ -28,14 +28,16 @@ class App extends React.Component {
         ...this.state.moneyList,
         {
           content: text,
-          price: price,
+          price: Number(price),
           time: t.toLocaleTimeString(),
           id: uuidv4()
         }
-      ]
+      ],
+      totalPrice: this.state.totalPrice + Number(price)
     })
   }
 
+  //내역 수정
   updatingMoneyList = (list) => {
     let moneyList = this.state.moneyList.slice();
     let { content, price, id } = list;
@@ -49,6 +51,7 @@ class App extends React.Component {
     });
   }
 
+  //가격 수정
   updatingMoneyList2 = (list) => {
     let moneyList = this.state.moneyList.slice();
     for (var i = 0; i < moneyList.length; i++) {
@@ -56,10 +59,16 @@ class App extends React.Component {
         moneyList[i].price = list.price;
       }
     }
+
+    let total = 0;
+    console.log('total ' + typeof total);
+    for (var i = 0; i < this.state.moneyList.length; i++) {
+      total += Number(this.state.moneyList[i].price);
+    }
     this.setState({
       ...moneyList,
-      // totalPrice: 0
-    })
+      totalPrice: total,
+    });
   }
 
   deleteList = (list, price) => {
@@ -75,10 +84,16 @@ class App extends React.Component {
   totalPrice = (price) => {
     //console.log(price);
     // this.state.moneyList로 했을땐 안됐음. this.state.totalPrice로 접근했어야 함.
-    const totalPrice = this.state.totalPrice;
-    this.setState({
-      totalPrice: Number(price) + Number(totalPrice)
-    })
+    // const totalPrice = this.state.totalPrice;
+    // let total = 0;
+    // for (var i = 0; i < this.state.moneyList.length; i++) {
+    //   // total = this.state.moneyList[i].price;
+    //   console.log(this.state.moneyList[i].price);
+    // }
+    // this.setState({
+    //   // totalPrice: Number(price) + Number(totalPrice),
+    //   totalPrice: total
+    // })
   }
 
   render() {
