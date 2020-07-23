@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import AddBar from './AddBar';
-import MoneyListWrap from './MoneyListWrap';
-import TotalPrice from './TotalPrice';
+import AddBar from './components/AddBar';
+import MoneyListWrap from './components/MoneyListWrap';
+import TotalPrice from './components/TotalPrice';
 import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
@@ -107,6 +107,7 @@ class App extends React.Component {
         ></MoneyListWrap>
         <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
         <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
+
       </div>
     )
   }
