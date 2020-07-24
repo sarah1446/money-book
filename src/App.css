@@ -1,65 +1,126 @@
 *{
   margin: 0;
   padding:0;
+  box-sizing: border-box;
+}
+body{
+  background-color:#ebefcb;
+  
 }
 .App {
   position: relative;
-  text-align: center;
-  border: 1px solid purple;
-     width: 300px;
-     width: 400px;
-    height: 450px;
+  /* text-align: center; */
+     width: 320px;
+    height: 480px;
     margin: 0 auto;
-    padding: 25px 10px;
+    padding-top: 25px ;
+    background-color:#fff;
 }
 .App .date{
-  background-color: aquamarine;
+ border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     height: 40px;
-    margin-bottom: 5px;
+    line-height: 40px;
+    text-align: center;
+    /* margin-bottom: 5px; */
+    font-weight: bold;
 }
 li{
   list-style: none
 }
-
+.money-list-wrap {
+  height: 320px;
+  overflow-y: auto;
+}
 .list-wrap{
   overflow: hidden;
-  width: 280px;
-  width: 100%;
+  width: 275px;
+  float: left;
+  padding: 10px 0;
 }
 .list-wrap li{
   width:35%;
   float: left;
-  min-width:50px;
+  /* min-width:50px;
       min-width: 66px;
-      height:25px;
+      height:25px; */
+}
+.list-wrap li:not(.time){
+ 
+ 
 }
 .list-wrap li.time{
-  width:20%;
-  width:30%;
+     width: 55px;
+     color: #757575;
 }
 .list-wrap li.cont{
-  /* width:40%; */
-  background-color:yellow;
+   width: 115px;
+  text-align: left;
+  color: #444;
+    font-weight: bold;
+     padding: 0 8px;
+  /* background-color:yellow; */
 }
 .list-wrap li.price{
-  /* width: 40%; */
-  background-color:aquamarine;
+   width: 95px;
+  text-align: right;
+  color: #31ce92;
+    font-weight: 500;
+  /* background-color:aquamarine; */
 }
 
 .money-list{
-  /* width: 270px; */
-  margin: 0 auto; 
+  /* height: 40px;
+  line-height: 40px; */
+  margin: 0 10px;
+      padding: 0 5px;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
 }
 .money-list .delete{
-  width: 20px;
+  float: right;
+  padding-top: 10px;
 }
-.add-bar{
-  position: absolute;
-  bottom: 25px;
+.money-list .delete span{
+     width: 15px;
+    height: 15px;
+    line-height: 12px;
+    background-color: #eee;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-block;
+    color: #31ce92;
+    vertical-align: 2px;
+}
+.money-list input{
   height: 30px;
+  margin-right: 7px;
+   border: 1px solid #63c7a6;
+  border-radius: 3px;
+  outline: none;
+  padding: 0 8px;
+  vertical-align: 2px;
+}
+.money-list input.modi-cont {
+  width: 100px;
+}
+.money-list input.modi-price {
+   width: 90px;
 }
 
-.add-bar input[type="text"]{
+
+
+
+.add-bar{
+  position: absolute;
+  bottom: 20px;
+  height: 30px;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+.add-bar input[type="text"], .add-bar input[type="number"] {
   height: 34px;
   width: 120px;
   margin-right: 7px;
@@ -80,4 +141,19 @@ li{
     border-radius: 4px;
     font-weight: bold;
     outline: none;
+}
+
+.total-price {
+  text-align: right;
+  color: #31ce92;
+  margin: 0 10px;
+  padding: 5px;
+}
+.bottom{
+  position: absolute;
+  height: 90px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* border: 1px solid red; */
 }

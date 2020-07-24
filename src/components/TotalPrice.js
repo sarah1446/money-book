@@ -10,8 +10,8 @@ class TotalPrice extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.totalPrice}
+      <div className="total-price">
+        총 지출 : {this.props.totalPrice}원
       </div>
     )
   }

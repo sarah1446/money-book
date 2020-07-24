@@ -6,16 +6,14 @@ class MoneyListWrap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // total: '0'
+      date: ''
     }
   }
-
 
   render() {
     // const _total = this.props.totalPrice
     return (
-      <div>
-        <div className="date">2020.06</div>
+      <div className="money-list-wrap">
         {
           this.props.moneyList.map((list, key) => {
             return (
@@ -30,7 +28,7 @@ class MoneyListWrap extends React.Component {
             )
           })
         }
-        <p>{this.props.totalPrice}</p>
+
       </div>
     )
   }

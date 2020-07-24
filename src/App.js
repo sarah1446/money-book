@@ -3,33 +3,30 @@ import './App.css';
 import AddBar from './components/AddBar';
 import MoneyListWrap from './components/MoneyListWrap';
 import TotalPrice from './components/TotalPrice';
+import Today from './components/Today';
 import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      moneyList: [
-        // {
-        //   content: "",
-        //   price: "",
-        //   time: "",
-        //   id: uuidv4()
-        // }
-      ],
+      moneyList: [],
       totalPrice: 0
     }
   }
 
   addMoneyList = (text, price) => {
-    const t = new Date();
+    const time = new Date();
+    let hours = time.getHours();
+    let mins = time.getMinutes();
     this.setState({
       moneyList: [
         ...this.state.moneyList,
         {
           content: text,
-          price: Number(price),
-          time: t.toLocaleTimeString(),
+          price: Number(price).toLocaleString(),
+          // time: t.toLocaleTimeString(),
+          time: hours + ':' + mins,
           id: uuidv4()
         }
       ],
@@ -56,12 +53,16 @@ class App extends React.Component {
     let moneyList = this.state.moneyList.slice();
     for (var i = 0; i < moneyList.length; i++) {
       if (moneyList[i].id === list.id) {
-        moneyList[i].price = list.price;
+        // moneyList[i].price = list.price;
+        let changedPrice = Number(list.price).toLocaleString();
+        //console.log(typeof test); // number
+        moneyList[i].price = changedPrice;
       }
+      //price: Number(price).toLocaleString(),
     }
 
     let total = 0;
-    console.log('total ' + typeof total);
+    // console.log('total ' + typeof total);
     for (var i = 0; i < this.state.moneyList.length; i++) {
       total += Number(this.state.moneyList[i].price);
     }
@@ -81,33 +82,21 @@ class App extends React.Component {
     })
   }
 
-  totalPrice = (price) => {
-    //console.log(price);
-    // this.state.moneyList로 했을땐 안됐음. this.state.totalPrice로 접근했어야 함.
-    // const totalPrice = this.state.totalPrice;
-    // let total = 0;
-    // for (var i = 0; i < this.state.moneyList.length; i++) {
-    //   // total = this.state.moneyList[i].price;
-    //   console.log(this.state.moneyList[i].price);
-    // }
-    // this.setState({
-    //   // totalPrice: Number(price) + Number(totalPrice),
-    //   totalPrice: total
-    // })
-  }
-
   render() {
     return (
       <div className="App">
+        <Today></Today>
+
         <MoneyListWrap
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
           updatingMoneyList={this.updatingMoneyList}
           updatingMoneyList2={this.updatingMoneyList2}
         ></MoneyListWrap>
-        <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
-        <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
-
+        <div className="bottom">
+          <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
+          <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
+        </div>
       </div>
     )
   }

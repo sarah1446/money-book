@@ -59,9 +59,9 @@ class MoneyList extends React.Component {
 
   render() {
     const { content, price, time } = this.props.list;
+    // console.log('price ' + price);
     return (
       <div className="money-list">
-        <div className="delete" onClick={this.deleteList}>x</div>
         <ul className="list-wrap">
           <li className="time">{time}</li>
           <li className="cont" onDoubleClick={this.contentUpdatingOpen}>
@@ -70,17 +70,18 @@ class MoneyList extends React.Component {
               content
               :
               //수정모드 
-              <input type="text" defaultValue={content} onKeyDown={this.contentUpdating} />
+              <input type="text" defaultValue={content} onKeyDown={this.contentUpdating} className="modi-cont" />
             }
           </li>
           <li className="price" onDoubleClick={this.priceUpdatingOpen}>
             {this.state.priceUpdatingMode === false ?
-              price
+              '-' + price + '원'
               :
-              <input type="text" defaultValue={price} onKeyDown={this.priceUpdating} />
+              <input type="number" defaultValue={price} onKeyDown={this.priceUpdating} className="modi-price" />
             }
           </li>
         </ul>
+        <div className="delete" onClick={this.deleteList}><span>-</span></div>
       </div>
     )
   }
