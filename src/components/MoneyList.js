@@ -64,7 +64,7 @@ class MoneyList extends React.Component {
       <div className="money-list">
         <ul className="list-wrap">
           <li className="time">{time}</li>
-          <li className="cont" onDoubleClick={this.contentUpdatingOpen}>
+          <li className="cont listCont" onDoubleClick={this.contentUpdatingOpen}>
             {this.state.contentUpdatingMode === false ?
               //내용
               content
@@ -73,7 +73,7 @@ class MoneyList extends React.Component {
               <input type="text" defaultValue={content} onKeyDown={this.contentUpdating} className="modi-cont" />
             }
           </li>
-          <li className="price" onDoubleClick={this.priceUpdatingOpen}>
+          <li className="price priceCont" onDoubleClick={this.priceUpdatingOpen}>
             {this.state.priceUpdatingMode === false ?
               '-' + price + '원'
               :

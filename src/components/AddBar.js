@@ -35,10 +35,10 @@ class AddBar extends React.Component {
   render() {
     return (
       <div className="add-bar">
-        <input type="text" onChange={this.changeText} value={this.state.text} />
-        <input type="number" onChange={this.changePrice} value={this.state.price} />
+        <input type="text" onChange={this.changeText} value={this.state.text} className="textInput" />
+        <input type="number" onChange={this.changePrice} value={this.state.price} className="priceInput" />
 
-        <button onClick={this.sendList}>추가</button>
+        <button onClick={this.sendList} className="sendBtn">추가</button>
       </div>
     )
   }

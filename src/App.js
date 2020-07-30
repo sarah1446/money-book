@@ -7,6 +7,7 @@ import Today from './components/Today';
 import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +25,8 @@ class App extends React.Component {
         ...this.state.moneyList,
         {
           content: text,
-          price: Number(price).toLocaleString(),
+          // price: Number(price).toLocaleString(),
+          price: price,
           // time: t.toLocaleTimeString(),
           time: hours + ':' + mins,
           id: uuidv4()
@@ -53,16 +55,13 @@ class App extends React.Component {
     let moneyList = this.state.moneyList.slice();
     for (var i = 0; i < moneyList.length; i++) {
       if (moneyList[i].id === list.id) {
-        // moneyList[i].price = list.price;
-        let changedPrice = Number(list.price).toLocaleString();
-        //console.log(typeof test); // number
+        // let changedPrice = Number(list.price).toLocaleString();
+        let changedPrice = list.price;
         moneyList[i].price = changedPrice;
       }
-      //price: Number(price).toLocaleString(),
     }
 
     let total = 0;
-    // console.log('total ' + typeof total);
     for (var i = 0; i < this.state.moneyList.length; i++) {
       total += Number(this.state.moneyList[i].price);
     }
@@ -82,6 +81,7 @@ class App extends React.Component {
     })
   }
 
+
   render() {
     return (
       <div className="App">
@@ -97,8 +97,9 @@ class App extends React.Component {
           <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
           <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
         </div>
-      </div>
+      </div >
     )
+
   }
 }
 export default App;
