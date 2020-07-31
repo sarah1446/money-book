@@ -18,6 +18,7 @@ class MoneyListWrap extends React.Component {
           this.props.moneyList.map((list, key) => {
             return (
               <MoneyList
+                save={this.props.save}
                 list={list}
                 key={key}
                 deleteList={this.props.deleteList}

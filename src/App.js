@@ -81,12 +81,37 @@ class App extends React.Component {
     })
   }
 
+  save = () => {
+    let textInput = document.querySelector('.textInput');
+    let priceInput = document.querySelector('.priceInput');
+    let sendBtn = document.querySelector('.sendBtn');
+    let listCont = document.querySelector('.listCont'); // 내역
+    let priceCont = document.querySelector('.priceCont'); // 가격
+
+    let listObj = this.state.moneyList;
+    console.log(this.state.moneyList);
+    localStorage.setItem('list', JSON.stringify(listObj));
+  }
+
+  //새로고침했을 때 데이터가 있다면 그려주기 
+  componentWillMount() {
+    if (localStorage.getItem('list')) {
+      //기존데이터 그리기
+      this.setState({
+        moneyList: JSON.parse(localStorage.list)
+      })
+    }
+  }
+
+  //컴포넌트 업데이트 될때마다 갱신
+  componentDidUpdate() {
+    this.save();
+  }
 
   render() {
     return (
       <div className="App">
         <Today></Today>
-
         <MoneyListWrap
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
@@ -95,7 +120,7 @@ class App extends React.Component {
         ></MoneyListWrap>
         <div className="bottom">
           <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
-          <AddBar totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
+          <AddBar save={this.save} totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
         </div>
       </div >
     )
