@@ -81,16 +81,18 @@ class App extends React.Component {
     })
   }
 
-  save = () => {
-    let textInput = document.querySelector('.textInput');
-    let priceInput = document.querySelector('.priceInput');
-    let sendBtn = document.querySelector('.sendBtn');
-    let listCont = document.querySelector('.listCont'); // 내역
-    let priceCont = document.querySelector('.priceCont'); // 가격
+  storage = () => {
+    localStorage.setItem('list', JSON.stringify(this.state.moneyList));
+    localStorage.setItem('totalPrice', JSON.stringify(this.state.totalPrice));
+  }
+  saveDate = (date) => {
+    console.log(date)
+    localStorage.setItem('date', date);
+  }
 
-    let listObj = this.state.moneyList;
-    console.log(this.state.moneyList);
-    localStorage.setItem('list', JSON.stringify(listObj));
+  //컴포넌트 업데이트 될때마다 갱신
+  componentDidUpdate() {
+    this.storage();
   }
 
   //새로고침했을 때 데이터가 있다면 그려주기 
@@ -98,20 +100,16 @@ class App extends React.Component {
     if (localStorage.getItem('list')) {
       //기존데이터 그리기
       this.setState({
-        moneyList: JSON.parse(localStorage.list)
+        moneyList: JSON.parse(localStorage.list),
+        totalPrice: JSON.parse(localStorage.totalPrice)
       })
     }
-  }
-
-  //컴포넌트 업데이트 될때마다 갱신
-  componentDidUpdate() {
-    this.save();
   }
 
   render() {
     return (
       <div className="App">
-        <Today></Today>
+        <Today saveDate={this.saveDate}></Today>
         <MoneyListWrap
           moneyList={this.state.moneyList}
           deleteList={this.deleteList}
@@ -120,9 +118,9 @@ class App extends React.Component {
         ></MoneyListWrap>
         <div className="bottom">
           <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>
-          <AddBar save={this.save} totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
+          <AddBar storage={this.storage} totalPrice={this.totalPrice} addMoneyList={this.addMoneyList} moneyList={this.state.moneyList}></AddBar>
         </div>
-      </div >
+      </div>
     )
 
   }

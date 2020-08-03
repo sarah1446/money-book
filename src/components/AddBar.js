@@ -29,7 +29,7 @@ class AddBar extends React.Component {
       price: '',
       // time: t
     });
-    this.props.save();
+    this.props.storage();
     // this.props.totalPrice(this.state.price);
   }
 
@@ -38,7 +38,6 @@ class AddBar extends React.Component {
       <div className="add-bar">
         <input type="text" onChange={this.changeText} value={this.state.text} className="textInput" />
         <input type="number" onChange={this.changePrice} value={this.state.price} className="priceInput" />
-
         <button onClick={this.sendList} className="sendBtn">추가</button>
       </div>
     )
