@@ -1,6 +1,7 @@
 import React from 'react';
 import MoneyList from './MoneyList';
 // import AddBar from './AddBar.js'
+import { connect } from "react-redux";
 
 class MoneyListWrap extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class MoneyListWrap extends React.Component {
     return (
       <div className="money-list-wrap">
         {
-          this.props.moneyList.map((list, key) => {
+          this.props.money.map((list, key) => {
             return (
               <MoneyList
                 save={this.props.save}
@@ -34,7 +35,18 @@ class MoneyListWrap extends React.Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    money: state.moneyList
+  }
+}
+
+const connectToStore = connect(
+  mapStateToProps
+  // mapDispatchToProps
+);
+
+export default connectToStore(MoneyListWrap);
 
 
-
-export default MoneyListWrap;
+// export default MoneyListWrap;

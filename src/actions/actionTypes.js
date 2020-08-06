@@ -1,5 +1,5 @@
-export const ADD_LIST = "ADD_LIST";
+export const ADD = "ADD";
 
 export default {
-  ADD_LIST
+  ADD
 };

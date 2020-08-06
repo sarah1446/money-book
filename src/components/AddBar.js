@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { addList } from "../action";
 class AddBar extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +23,8 @@ class AddBar extends React.Component {
 
   sendList = () => {
     this.props.addList({
-      // content: this.state.text,
-      // price: this.state.price
-      content: '수동모드임 ㅠㅠ',
-      price: 890
+      content: this.state.text,
+      price: this.state.price
     });
     this.setState({
       text: '',
@@ -47,8 +46,7 @@ class AddBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    // money: state.money
-    money: state.money
+    money: state.moneyList
   }
 }
 

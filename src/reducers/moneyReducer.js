@@ -9,16 +9,12 @@ const initialState = {
 
 export const moneyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_LIST: {
-      return [
-        ...state,
-        {
-          // content: '수동으로하고이따',
-          // price: 770
-          content: action.content,
-          price: action.price
-        }
-      ]
+    case actionTypes.ADD: {
+      let arr = state.moneyList.slice();
+      return {
+        moneyList: arr.push(action),
+        totalPrice: 10
+      }
     }
     default: return state;
   }

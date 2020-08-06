@@ -87,18 +87,5 @@ class MoneyList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    money: state.money
-  }
-}
 
-
-const connectToStore = connect(
-  mapStateToProps
-  // mapDispatchToProps
-);
-
-export default connectToStore(MoneyList);
-
-// export default MoneyList;
+export default MoneyList;
