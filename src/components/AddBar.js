@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from "react-redux";
+import { addList } from "../action";
+
 class AddBar extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +26,11 @@ class AddBar extends React.Component {
   sendList = () => {
     // const t = new Date();
     //왜 여기서 new Date하면 안되지
-    this.props.addMoneyList(this.state.text, this.state.price);
+    // this.props.addMoneyList(this.state.text, this.state.price);
+    this.props.addList({
+      content: '수동',
+      price: 900
+    })
     this.setState({
       text: '',
       price: '',
@@ -45,4 +52,22 @@ class AddBar extends React.Component {
 
 }
 
-export default AddBar;
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    money: state.moneyList
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  addList: add => dispatch(addList(add))
+});
+
+const connectToStore = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connectToStore(AddBar);
+
+// export default AddBar;

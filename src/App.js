@@ -8,33 +8,33 @@ import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      moneyList: [],
-      totalPrice: 0
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     moneyList: [],
+  //     totalPrice: 0
+  //   }
+  // }
 
-  addMoneyList = (text, price) => {
-    const time = new Date();
-    let hours = time.getHours();
-    let mins = time.getMinutes();
-    this.setState({
-      moneyList: [
-        ...this.state.moneyList,
-        {
-          content: text,
-          // price: Number(price).toLocaleString(),
-          price: price,
-          // time: t.toLocaleTimeString(),
-          time: hours + ':' + mins,
-          id: uuidv4()
-        }
-      ],
-      totalPrice: this.state.totalPrice + Number(price)
-    })
-  }
+  // addMoneyList = (text, price) => {
+  //   const time = new Date();
+  //   let hours = time.getHours();
+  //   let mins = time.getMinutes();
+  //   this.setState({
+  //     moneyList: [
+  //       ...this.state.moneyList,
+  //       {
+  //         content: text,
+  //         // price: Number(price).toLocaleString(),
+  //         price: price,
+  //         // time: t.toLocaleTimeString(),
+  //         time: hours + ':' + mins,
+  //         id: uuidv4()
+  //       }
+  //     ],
+  //     totalPrice: this.state.totalPrice + Number(price)
+  //   })
+  // }
 
   //내역 수정
   updatingMoneyList = (list) => {
