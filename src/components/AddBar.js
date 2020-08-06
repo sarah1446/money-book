@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from "react-redux";
 class AddBar extends React.Component {
   constructor(props) {
     super(props);
@@ -21,16 +21,17 @@ class AddBar extends React.Component {
   }
 
   sendList = () => {
-    // const t = new Date();
-    //왜 여기서 new Date하면 안되지
-    this.props.addMoneyList(this.state.text, this.state.price);
+    this.props.addList({
+      // content: this.state.text,
+      // price: this.state.price
+      content: '수동모드임 ㅠㅠ',
+      price: 890
+    });
     this.setState({
       text: '',
       price: '',
-      // time: t
     });
     this.props.storage();
-    // this.props.totalPrice(this.state.price);
   }
 
   render() {
@@ -42,7 +43,26 @@ class AddBar extends React.Component {
       </div>
     )
   }
-
 }
 
-export default AddBar;
+const mapStateToProps = (state) => {
+  return {
+    // money: state.money
+    money: state.money
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addList: add => dispatch(addList(add))
+  }
+};
+
+const connectToStore = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
+
+export default connectToStore(AddBar);
+// export default AddBar;
+

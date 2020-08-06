@@ -35,4 +35,6 @@ class MoneyListWrap extends React.Component {
   }
 }
 
+
+
 export default MoneyListWrap;

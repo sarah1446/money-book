@@ -86,7 +86,7 @@ class App extends React.Component {
     localStorage.setItem('totalPrice', JSON.stringify(this.state.totalPrice));
   }
   saveDate = (date) => {
-    console.log(date)
+    // console.log(date);
     localStorage.setItem('date', date);
   }
 

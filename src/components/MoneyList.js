@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from "react-redux";
 class MoneyList extends React.Component {
   constructor(props) {
     super(props);
@@ -87,4 +87,18 @@ class MoneyList extends React.Component {
   }
 }
 
-export default MoneyList;
+const mapStateToProps = (state) => {
+  return {
+    money: state.money
+  }
+}
+
+
+const connectToStore = connect(
+  mapStateToProps
+  // mapDispatchToProps
+);
+
+export default connectToStore(MoneyList);
+
+// export default MoneyList;

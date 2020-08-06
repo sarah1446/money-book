@@ -16,7 +16,7 @@ class Today extends React.Component {
   save = () => {
     //const date = document.querySelector('.date > span');
     const date = this.state.date;
-    console.log(date);
+    // console.log(date);
     // console.log(date.content);
     // this.props.saveDate(date);
     this.props.saveDate(date);
