@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addList } from "../action";
+import { addList } from "../actions";
 class AddBar extends React.Component {
   constructor(props) {
     super(props);
@@ -23,8 +23,10 @@ class AddBar extends React.Component {
 
   sendList = () => {
     this.props.addList({
-      content: this.state.text,
-      price: this.state.price
+      // content: this.state.text,
+      // price: this.state.price
+      content: '임시수동',
+      price: 20
     });
     this.setState({
       text: '',
@@ -44,11 +46,11 @@ class AddBar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    money: state.moneyList
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     money: state.moneyList
+//   }
+// }
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -57,7 +59,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const connectToStore = connect(
-  mapStateToProps,
+  // mapStateToProps,
   mapDispatchToProps
 );
 

@@ -5,6 +5,6 @@ const rootReducer = combineReducers({
   ...reducer
 });
 
-const store = createStore(rootReducer);
-console.log(store.getState());
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// console.log(store.getState());
 export default store;

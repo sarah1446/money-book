@@ -5,7 +5,9 @@ export function addList(add) {
     type: ADD,
     add
   }
-  export default {
-    addList
-  }
 }
+export default {
+  addList
+}
+
+
