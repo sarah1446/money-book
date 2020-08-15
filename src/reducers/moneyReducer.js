@@ -6,11 +6,15 @@ const initialState = {
   moneyList: [
     {
       content: '리덕스!!',
-      price: 900
+      price: 900,
+      time: '11:11',
+      id: uuidv4(),
     },
     {
       content: 'ㅜㅜ',
-      price: 350
+      price: 350,
+      time: '3:14',
+      id: uuidv4(),
     }
   ],
   totalPrice: 1000
@@ -32,6 +36,7 @@ export const moneyReducer = (state = initialState, action) => {
             id: uuidv4(),
           }
         ],
+        totalPrice: state.totalPrice + action.add.price
       }
     }
     default:

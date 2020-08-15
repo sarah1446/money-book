@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from "react-redux";
 class TotalPrice extends React.Component {
   constructor(props) {
     super(props);
@@ -17,4 +17,14 @@ class TotalPrice extends React.Component {
   }
 }
 
-export default TotalPrice;
+const mapStateToProps = (state) => {
+  return {
+    totalPrice: state.money.totalPrice,
+  }
+}
+
+const connectToStore = connect(
+  mapStateToProps
+);
+
+export default connectToStore(TotalPrice);

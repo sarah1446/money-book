@@ -22,9 +22,10 @@ class AddBar extends React.Component {
   }
 
   sendList = () => {
+    console.log(typeof this.state.price)
     this.props.addList({
       content: this.state.text,
-      price: this.state.price
+      price: Number(this.state.price)
     });
     this.setState({
       text: '',

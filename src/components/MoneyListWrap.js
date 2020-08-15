@@ -1,5 +1,5 @@
 import React from 'react';
-// import MoneyList from './MoneyList';
+import MoneyList from './MoneyList';
 // import AddBar from './AddBar.js'
 import { connect } from "react-redux";
 
@@ -21,16 +21,16 @@ class MoneyListWrap extends React.Component {
         {
           this.props.money.moneyList.map((list, key) => {
             return (
-              <div key={key}>{list.content} {list.price}</div>
-              // <MoneyList
-              //   save={this.props.save}
-              //   list={list}
-              //   key={key}
-              //   deleteList={this.props.deleteList}
-              //   updatingMoneyList={this.props.updatingMoneyList}
-              //   updatingMoneyList2={this.props.updatingMoneyList2}
-              // >
-              // </MoneyList>
+              // <div key={key}>{list.content} {Number(list.price)}</div>
+              <MoneyList
+                // save={this.props.save}
+                list={list}
+                key={key}
+              // deleteList={this.props.deleteList}
+              // updatingMoneyList={this.props.updatingMoneyList}
+              // updatingMoneyList2={this.props.updatingMoneyList2}
+              >
+              </MoneyList>
             )
           })
         }
