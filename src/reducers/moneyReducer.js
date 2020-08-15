@@ -1,8 +1,8 @@
 import actionTypes from "../actions/actionTypes";
+import { v4 as uuidv4 } from "uuid";
+import TotalPrice from '../components/TotalPrice'
 
 const initialState = {
-  // moneyList: [],
-  // totalPrice: 0
   moneyList: [
     {
       content: '리덕스!!',
@@ -19,10 +19,19 @@ const initialState = {
 export const moneyReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD: {
-      let arr = state.moneyList.slice();
+      const time = new Date();
+      const hours = time.getHours();
+      const mins = time.getMinutes();
       return {
-        moneyList: arr.concat(action),
-        totalPrice: 2000
+        moneyList: [
+          ...state.moneyList,
+          {
+            content: action.add.content,
+            price: action.add.price,
+            time: `${hours} : ${mins}`,
+            id: uuidv4(),
+          }
+        ],
       }
     }
     default:

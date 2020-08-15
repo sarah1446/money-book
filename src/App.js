@@ -4,7 +4,7 @@ import AddBar from './components/AddBar';
 import MoneyListWrap from './components/MoneyListWrap';
 import TotalPrice from './components/TotalPrice';
 import Today from './components/Today';
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 class App extends React.Component {
 
@@ -16,25 +16,25 @@ class App extends React.Component {
     }
   }
 
-  addMoneyList = (text, price) => {
-    const time = new Date();
-    let hours = time.getHours();
-    let mins = time.getMinutes();
-    this.setState({
-      moneyList: [
-        ...this.state.moneyList,
-        {
-          content: text,
-          // price: Number(price).toLocaleString(),
-          price: price,
-          // time: t.toLocaleTimeString(),
-          time: hours + ':' + mins,
-          id: uuidv4()
-        }
-      ],
-      totalPrice: this.state.totalPrice + Number(price)
-    })
-  }
+  // addMoneyList = (text, price) => {
+  //   const time = new Date();
+  //   let hours = time.getHours();
+  //   let mins = time.getMinutes();
+  //   this.setState({
+  //     moneyList: [
+  //       ...this.state.moneyList,
+  //       {
+  //         content: text,
+  //         // price: Number(price).toLocaleString(),
+  //         price: price,
+  //         // time: t.toLocaleTimeString(),
+  //         time: hours + ':' + mins,
+  //         id: uuidv4()
+  //       }
+  //     ],
+  //     totalPrice: this.state.totalPrice + Number(price)
+  //   })
+  // }
 
   //내역 수정
   updatingMoneyList = (list) => {

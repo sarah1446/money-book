@@ -23,10 +23,8 @@ class AddBar extends React.Component {
 
   sendList = () => {
     this.props.addList({
-      // content: this.state.text,
-      // price: this.state.price
-      content: '임시수동',
-      price: 20
+      content: this.state.text,
+      price: this.state.price
     });
     this.setState({
       text: '',
@@ -55,11 +53,13 @@ class AddBar extends React.Component {
 const mapDispatchToProps = dispatch => {
   return {
     addList: add => dispatch(addList(add))
+    // addList => 현재 컴포넌트에서 받을 함수명
+    // addList(add) => 액션생성 함수의 이름  
   }
 };
 
 const connectToStore = connect(
-  // mapStateToProps,
+  null,
   mapDispatchToProps
 );
 
