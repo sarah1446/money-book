@@ -12,12 +12,16 @@ class MoneyListWrap extends React.Component {
   }
 
   render() {
+    // console.log(this.props.money);
+    // console.log(this.props.money.moneyList);
+    // console.log(this.props.money.money.moneyList);
+    // console.log('-------------------------------------------------------------------')
     return (
       <div className="money-list-wrap">
         {
-          this.props.moneyList.map((list, key) => {
+          this.props.money.moneyList.map((list, key) => {
             return (
-              <div key={key}>{list.content}</div>
+              <div key={key}>{list.content} {list.price}</div>
               // <MoneyList
               //   save={this.props.save}
               //   list={list}
@@ -37,7 +41,7 @@ class MoneyListWrap extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    moneyList: state.moneyList
+    money: state.money
   }
 }
 
