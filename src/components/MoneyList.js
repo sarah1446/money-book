@@ -23,8 +23,6 @@ class MoneyList extends React.Component {
   updatingContentOpen = e => {
     this.setState({
       updatingContentMode: true,
-      content: e.target.value,
-      // price: e.target.value
     })
   }
 
@@ -34,7 +32,7 @@ class MoneyList extends React.Component {
         updatingContentMode: false,
       });
       this.props.updatingContent({
-        ...this.props.list,
+        ...this.props.list, // moneyListWrap에서 아니면 mapStateToProps에서 받아와야하나.. 나중에 다시 생각
         content: e.target.value
       });
     }
