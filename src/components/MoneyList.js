@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { deleteList } from "../actions";
 class MoneyList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,10 @@ class MoneyList extends React.Component {
   }
 
   deleteList = () => {
-    this.props.deleteList(this.props.list, this.props.list.price);
+    this.props.deleteList({
+      price: this.props.list.price,
+      id: this.props.list.id
+    });
   }
 
   contentUpdatingOpen = (e) => {
@@ -87,5 +91,16 @@ class MoneyList extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    deleteList: del => dispatch(deleteList(del))
+  }
+}
+const connectToStore = connect(
+  null,
+  mapDispatchToProps
+)
 
-export default MoneyList;
+export default connectToStore(MoneyList);
+
+// export default MoneyList;

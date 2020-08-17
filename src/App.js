@@ -16,26 +16,6 @@ class App extends React.Component {
     }
   }
 
-  // addMoneyList = (text, price) => {
-  //   const time = new Date();
-  //   let hours = time.getHours();
-  //   let mins = time.getMinutes();
-  //   this.setState({
-  //     moneyList: [
-  //       ...this.state.moneyList,
-  //       {
-  //         content: text,
-  //         // price: Number(price).toLocaleString(),
-  //         price: price,
-  //         // time: t.toLocaleTimeString(),
-  //         time: hours + ':' + mins,
-  //         id: uuidv4()
-  //       }
-  //     ],
-  //     totalPrice: this.state.totalPrice + Number(price)
-  //   })
-  // }
-
   //내역 수정
   updatingMoneyList = (list) => {
     let moneyList = this.state.moneyList.slice();
@@ -69,16 +49,6 @@ class App extends React.Component {
       ...moneyList,
       totalPrice: total,
     });
-  }
-
-  deleteList = (list, price) => {
-    const moneyList = this.state.moneyList.slice();
-    const totalPrice = this.state.totalPrice;
-
-    this.setState({
-      moneyList: moneyList.filter(t => t !== list),
-      totalPrice: Number(totalPrice) - Number(price)
-    })
   }
 
   storage = () => {

@@ -4,20 +4,20 @@ import TotalPrice from '../components/TotalPrice'
 
 const initialState = {
   moneyList: [
-    {
-      content: '리덕스!!',
-      price: 900,
-      time: '11:11',
-      id: uuidv4(),
-    },
-    {
-      content: 'ㅜㅜ',
-      price: 350,
-      time: '3:14',
-      id: uuidv4(),
-    }
+    // {
+    //   content: '리덕스!!',
+    //   price: 900,
+    //   time: '11:11',
+    //   id: uuidv4(),
+    // },
+    // {
+    //   content: 'ㅜㅜ',
+    //   price: 350,
+    //   time: '3:14',
+    //   id: uuidv4(),
+    // }
   ],
-  totalPrice: 1000
+  totalPrice: 0
 }
 
 export const moneyReducer = (state = initialState, action) => {
@@ -39,6 +39,16 @@ export const moneyReducer = (state = initialState, action) => {
         totalPrice: state.totalPrice + action.add.price
       }
     }
+    case actionTypes.DELETE: {
+      console.log('minus');
+      return {
+        moneyList: [
+          ...state.moneyList.filter(f => f.id !== action.del.id),
+        ],
+        totalPrice: state.totalPrice - action.del.price
+      }
+    }
+
     default:
       return state;
   }

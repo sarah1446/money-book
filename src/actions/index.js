@@ -1,4 +1,4 @@
-import { ADD } from "./actionTypes";
+import { ADD, DELETE } from "./actionTypes";
 
 export function addList(add) {
   return {
@@ -12,8 +12,22 @@ export function addList(add) {
   //    type: "ADD"
   // }
 }
+
+export function deleteList(del) {
+  return {
+    type: DELETE,
+    del,
+  }
+  // {
+  //    del: {content: "핫도그", price: "1000"}
+  //    type: "DELETE"
+  // }
+}
+
+
 export default {
-  addList
+  addList,
+  deleteList
 }
 
 
