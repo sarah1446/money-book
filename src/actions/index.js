@@ -1,4 +1,4 @@
-import { ADD, DELETE } from "./actionTypes";
+import { ADD, DELETE, UPDATING_CONTENT } from "./actionTypes";
 
 export function addList(add) {
   return {
@@ -24,10 +24,18 @@ export function deleteList(del) {
   // }
 }
 
+export function updatingContent(updatingContent) {
+  return {
+    type: UPDATING_CONTENT,
+    updatingContent,
+  }
+}
+
 
 export default {
   addList,
-  deleteList
+  deleteList,
+  updatingContent
 }
 
 

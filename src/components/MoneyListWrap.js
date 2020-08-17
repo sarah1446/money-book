@@ -12,10 +12,6 @@ class MoneyListWrap extends React.Component {
   }
 
   render() {
-    // console.log(this.props.money);
-    // console.log(this.props.money.moneyList);
-    // console.log(this.props.money.money.moneyList);
-    // console.log('-------------------------------------------------------------------')
     return (
       <div className="money-list-wrap">
         {
@@ -26,9 +22,9 @@ class MoneyListWrap extends React.Component {
                 // save={this.props.save}
                 list={list}
                 key={key}
-              // deleteList={this.props.deleteList}
-              // updatingMoneyList={this.props.updatingMoneyList}
-              // updatingMoneyList2={this.props.updatingMoneyList2}
+                // deleteList={this.props.deleteList}
+                updatingContentt={this.props.updatingContent}
+                updatingPrice={this.props.updatingPrice}
               >
               </MoneyList>
             )

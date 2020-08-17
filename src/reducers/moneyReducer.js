@@ -41,12 +41,26 @@ export const moneyReducer = (state = initialState, action) => {
     }
 
     case actionTypes.DELETE: {
-      console.log('minus');
       return {
         moneyList: [
-          ...state.moneyList.filter(f => f.id !== action.del.id),
+          ...state.moneyList.filter(list => list.id !== action.del.id),
         ],
         totalPrice: state.totalPrice - action.del.price
+      }
+    }
+
+    case actionTypes.UPDATING_CONTENT: {
+      const moneyList = state.moneyList.slice();
+      const { content, price, id } = action.updatingContent;
+      for (let i = 0; i < moneyList.length; i++) {
+        if (moneyList[i].id === id) {
+          moneyList[i].content = content;
+        }
+      }
+      return {
+        moneyList: [
+          ...moneyList,
+        ]
       }
     }
 

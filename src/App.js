@@ -9,7 +9,8 @@ import Today from './components/Today';
 class App extends React.Component {
 
   //내역 수정
-  updatingMoneyList = (list) => {
+  updatingContent = (list) => {
+    // updatingMoneyList = (list) => {
     let moneyList = this.state.moneyList.slice();
     let { content, price, id } = list;
     for (var i = 0; i < moneyList.length; i++) {
@@ -23,7 +24,8 @@ class App extends React.Component {
   }
 
   //가격 수정
-  updatingMoneyList2 = (list) => {
+  updatingPrice = (list) => {
+    // updatingMoneyList2 = (list) => {
     let moneyList = this.state.moneyList.slice();
     for (var i = 0; i < moneyList.length; i++) {
       if (moneyList[i].id === list.id) {
@@ -74,8 +76,8 @@ class App extends React.Component {
         <Today saveDate={this.saveDate}></Today>
         <MoneyListWrap
           // moneyList={this.state.moneyList}
-          updatingMoneyList={this.updatingMoneyList}
-          updatingMoneyList2={this.updatingMoneyList2}
+          updatingContent={this.updatingContent}
+          updatingPrice={this.updatingPrice}
         ></MoneyListWrap>
         <div className="bottom">
           <TotalPrice totalPrice={this.state.totalPrice}></TotalPrice>

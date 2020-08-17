@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { deleteList } from "../actions";
+import { deleteList, updatingContent } from "../actions";
 class MoneyList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: '',
-      price: '',
-      time: '',
-      contentUpdatingMode: false,
-      priceUpdatingMode: false,
+      // content: '',
+      // price: '',
+      // time: '',
+      updatingContentMode: false,
+      updatingPriceMode: false
     }
   }
 
@@ -20,39 +20,39 @@ class MoneyList extends React.Component {
     });
   }
 
-  contentUpdatingOpen = (e) => {
+  updatingContentOpen = e => {
     this.setState({
-      contentUpdatingMode: true,
+      updatingContentMode: true,
       content: e.target.value,
       // price: e.target.value
     })
   }
 
-  priceUpdatingOpen = (e) => {
-    this.setState({
-      priceUpdatingMode: true,
-      // price: e.target.value
-    })
-  }
-
-  contentUpdating = (e) => {
+  updatingContent = e => {
     if (e.keyCode === 13) {
       this.setState({
-        contentUpdatingMode: false,
+        updatingContentMode: false,
       });
-      this.props.updatingMoneyList({
+      this.props.updatingContent({
         ...this.props.list,
         content: e.target.value
       });
     }
   }
 
-  priceUpdating = e => {
+  updatingPriceOpen = e => {
+    this.setState({
+      updatingPriceMode: true,
+      // price: e.target.value
+    })
+  }
+
+  updatingPrice = e => {
     if (e.keyCode === 13) {
       this.setState({
-        priceUpdatingMode: false,
+        updatingPriceMode: false,
       });
-      this.props.updatingMoneyList2({
+      this.props.updatingPrice({
         ...this.props.list,  // 
         price: e.target.value
       });
@@ -68,20 +68,20 @@ class MoneyList extends React.Component {
       <div className="money-list">
         <ul className="list-wrap">
           <li className="time">{time}</li>
-          <li className="cont listCont" onDoubleClick={this.contentUpdatingOpen}>
-            {this.state.contentUpdatingMode === false ?
+          <li className="cont listCont" onDoubleClick={this.updatingContentOpen}>
+            {this.state.updatingContentMode === false ?
               //내용
               content
               :
               //수정모드 
-              <input type="text" defaultValue={content} onKeyDown={this.contentUpdating} className="modi-cont" />
+              <input type="text" defaultValue={content} onKeyDown={this.updatingContent} className="modi-cont" />
             }
           </li>
-          <li className="price priceCont" onDoubleClick={this.priceUpdatingOpen}>
-            {this.state.priceUpdatingMode === false ?
+          <li className="price priceCont" onDoubleClick={this.updatingPriceOpen}>
+            {this.state.updatingPriceMode === false ?
               '-' + price + '원'
               :
-              <input type="number" defaultValue={price} onKeyDown={this.priceUpdating} className="modi-price" />
+              <input type="number" defaultValue={price} onKeyDown={this.updatingPrice} className="modi-price" />
             }
           </li>
         </ul>
@@ -93,7 +93,8 @@ class MoneyList extends React.Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    deleteList: del => dispatch(deleteList(del))
+    deleteList: del => dispatch(deleteList(del)),
+    updatingContent: updating => dispatch(updatingContent(updating)),
   }
 }
 const connectToStore = connect(
