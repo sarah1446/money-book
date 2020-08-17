@@ -8,14 +8,6 @@ import Today from './components/Today';
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      moneyList: [],
-      totalPrice: 0
-    }
-  }
-
   //내역 수정
   updatingMoneyList = (list) => {
     let moneyList = this.state.moneyList.slice();
@@ -81,8 +73,7 @@ class App extends React.Component {
       <div className="App">
         <Today saveDate={this.saveDate}></Today>
         <MoneyListWrap
-          moneyList={this.state.moneyList}
-          deleteList={this.deleteList}
+          // moneyList={this.state.moneyList}
           updatingMoneyList={this.updatingMoneyList}
           updatingMoneyList2={this.updatingMoneyList2}
         ></MoneyListWrap>
