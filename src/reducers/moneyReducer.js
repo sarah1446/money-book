@@ -3,20 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import TotalPrice from '../components/TotalPrice'
 
 const initialState = {
-  moneyList: [
-    // {
-    //   content: '리덕스!!',
-    //   price: 900,
-    //   time: '11:11',
-    //   id: uuidv4(),
-    // },
-    // {
-    //   content: 'ㅜㅜ',
-    //   price: 350,
-    //   time: '3:14',
-    //   id: uuidv4(),
-    // }
-  ],
+  moneyList: [],
   totalPrice: 0
 }
 
@@ -62,6 +49,29 @@ export const moneyReducer = (state = initialState, action) => {
           ...moneyList,
         ],
         totalPrice: state.totalPrice
+      }
+    }
+
+    case actionTypes.UPDATING_PRICE: {
+      const moneyList = state.moneyList.slice();
+      const { price, id } = action.updatingPrice;
+
+      for (let i = 0; i < moneyList.length; i++) {
+        if (moneyList[i].id == id) {
+          let changedPrice = price;
+          moneyList[i].price = changedPrice;
+        }
+      }
+      let totalPrice = 0;
+      for (let j = 0; j < moneyList.length; j++) {
+        totalPrice += Number(moneyList[j].price)
+      }
+
+      return {
+        moneyList: [
+          ...moneyList,
+        ],
+        totalPrice: totalPrice
       }
     }
 

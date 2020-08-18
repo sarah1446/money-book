@@ -45,12 +45,6 @@ class AddBar extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     money: state.moneyList
-//   }
-// }
-
 const mapDispatchToProps = dispatch => {
   return {
     addList: add => dispatch(addList(add))
@@ -65,5 +59,4 @@ const connectToStore = connect(
 );
 
 export default connectToStore(AddBar);
-// export default AddBar;
 

@@ -17,14 +17,9 @@ class MoneyListWrap extends React.Component {
         {
           this.props.money.moneyList.map((list, key) => {
             return (
-              // <div key={key}>{list.content} {Number(list.price)}</div>
               <MoneyList
-                // save={this.props.save}
                 list={list}
                 key={key}
-                // deleteList={this.props.deleteList}
-                updatingContentt={this.props.updatingContent}
-                updatingPrice={this.props.updatingPrice}
               >
               </MoneyList>
             )
@@ -43,10 +38,6 @@ const mapStateToProps = (state) => {
 
 const connectToStore = connect(
   mapStateToProps,
-  // mapDispatchToProps
 );
 
 export default connectToStore(MoneyListWrap);
-
-
-// export default MoneyListWrap;

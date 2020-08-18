@@ -1,13 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { deleteList, updatingContent } from "../actions";
+import { deleteList, updatingContent, updatingPrice } from "../actions";
 class MoneyList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // content: '',
-      // price: '',
-      // time: '',
       updatingContentMode: false,
       updatingPriceMode: false
     }
@@ -41,7 +38,6 @@ class MoneyList extends React.Component {
   updatingPriceOpen = e => {
     this.setState({
       updatingPriceMode: true,
-      // price: e.target.value
     })
   }
 
@@ -93,6 +89,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     deleteList: del => dispatch(deleteList(del)),
     updatingContent: updating => dispatch(updatingContent(updating)),
+    updatingPrice: updating => dispatch(updatingPrice(updating)),
   }
 }
 const connectToStore = connect(

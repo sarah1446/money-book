@@ -1,4 +1,4 @@
-import { ADD, DELETE, UPDATING_CONTENT } from "./actionTypes";
+import { ADD, DELETE, UPDATING_CONTENT, UPDATING_PRICE } from "./actionTypes";
 
 export function addList(add) {
   return {
@@ -31,11 +31,19 @@ export function updatingContent(updatingContent) {
   }
 }
 
+export function updatingPrice(updatingPrice) {
+  return {
+    type: UPDATING_PRICE,
+    updatingPrice
+  }
+}
+
 
 export default {
   addList,
   deleteList,
-  updatingContent
+  updatingContent,
+  updatingPrice
 }
 
 
