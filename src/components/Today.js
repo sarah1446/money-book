@@ -19,7 +19,7 @@ class Today extends React.Component {
     // console.log(date);
     // console.log(date.content);
     // this.props.saveDate(date);
-    this.props.saveDate(date);
+    // this.props.saveDate(date);
   }
 
   date = () => {
